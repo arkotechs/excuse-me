@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Excuse Me</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #2a2a2a;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: #ffffff;
+    }
+    select, button {
+      margin: 10px;
+      padding: 10px 15px;
+      font-size: 1em;
+      background-color: #3a3a3a;
+      color: #f0f0f0;
+      border: none;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button:hover {
+      background-color: #4a4a4a;
+      cursor: pointer;
+    }
+    #excuse {
+      margin: 20px 0;
+      font-style: italic;
+      min-height: 40px;
+      color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Excuse Me</h1>
+    <select id="category">
+      <option value="work">Work</option>
+      <option value="school">School</option>
+      <option value="friends">Plans with Friends</option>
+      <option value="weird">Weird</option>
+    </select>
+    <p id="excuse">Click below to generate an excuse.</p>
+    <button onclick="generateExcuse()">Generate Excuse</button>
+    <button onclick="copyExcuse()">Copy</button>
+  </div>
+  <script>
+    const excuses = {
+      work: [
+        "My internet was down.",
+        "I had a family emergency.",
+        "My laptop wouldn't start.",
+        "There was a power outage.",
+        "I had a doctor's appointment.",
+        "I was feeling unwell.",
+        "I had to take care of something urgent.",
+        "My calendar didn't sync properly.",
+        "I thought the meeting was tomorrow.",
+        "I lost track of time.",
+        "I had a software update that took forever.",
+        "My VPN wouldn't connect.",
+        "I was stuck in traffic.",
+        "I had to deal with a client issue.",
+        "My headset broke right before the call."
+      ],
+      school: [
+        "I wasn't feeling well.",
+        "I had a dentist appointment.",
+        "I had to help my family with something.",
+        "My alarm didn't go off.",
+        "I had technical issues.",
+        "I misunderstood the deadline.",
+        "I submitted the wrong file.",
+        "I had a personal emergency.",
+        "I was working on another assignment.",
+        "I forgot to save my work.",
+        "I lost my notes.",
+        "I thought it was due next week.",
+        "My laptop crashed.",
+        "I had a group project that fell apart.",
+        "I had to attend a family event."
+      ],
+      friends: [
+        "I wasn't feeling up for it.",
+        "Something came up last minute.",
+        "I had to help my parents.",
+        "I lost track of time.",
+        "I had a lot on my mind.",
+        "I needed a break.",
+        "I had to finish some work.",
+        "I forgot we made plans.",
+        "I didn’t check my messages.",
+        "I had to stay home.",
+        "I got caught up in chores.",
+        "I had a call I couldn’t miss.",
+        "I wasn’t in the mood to go out.",
+        "I had a headache.",
+        "I didn’t sleep well last night."
+      ],
+      weird: [
+        "My neighbor's goat escaped again.",
+        "I got stuck in an elevator with no signal.",
+        "I accidentally locked myself in the bathroom.",
+        "My phone updated and deleted everything.",
+        "I spilled coffee on my keyboard.",
+        "I got caught in a sandstorm.",
+        "My GPS sent me to the wrong city.",
+        "I thought today was Sunday.",
+        "I was waiting for a delivery that never came.",
+        "I had to chase my dog down the street.",
+        "My fridge started beeping and wouldn't stop.",
+        "I got stuck in a group chat argument.",
+        "My door handle broke and I couldn’t leave.",
+        "I was helping a friend move unexpectedly.",
+        "I had to reset my router 5 times."
+      ]
+    };
+
+    function generateExcuse() {
+      const category = document.getElementById("category").value;
+      const excuseList = excuses[category];
+      const excuse = excuseList[Math.floor(Math.random() * excuseList.length)];
+      document.getElementById("excuse").textContent = excuse;
+    }
+
+    function copyExcuse() {
+      const excuse = document.getElementById("excuse").textContent;
+      navigator.clipboard.writeText(excuse);
+    }
+  </script>
+</body>
+</html>
